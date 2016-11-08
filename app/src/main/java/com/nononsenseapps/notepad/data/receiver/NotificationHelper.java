@@ -75,10 +75,12 @@ public class NotificationHelper extends BroadcastReceiver {
     public static void clearNotification(@NonNull final Context context, @NonNull final Intent
             intent) {
         if (intent.getLongExtra(NOTIFICATION_DELETE_ARG, -1) > 0) {
+			Log.i(TAG, "NotificationDelete @NotificationHelper Ln# 78");
             com.nononsenseapps.notepad.data.model.sql.Notification.deleteOrReschedule(context, com.nononsenseapps.notepad.data.model.sql.Notification.getUri(intent.getLongExtra
                             (NOTIFICATION_DELETE_ARG, -1)));
         }
         if (intent.getLongExtra(NOTIFICATION_CANCEL_ARG, -1) > 0) {
+			Log.i(TAG, "NotificationCancel @NotificationHelper Ln# 78");
             NotificationHelper.cancelNotification(context, (int) intent.getLongExtra
                     (NOTIFICATION_CANCEL_ARG, -1));
         }
@@ -106,12 +108,14 @@ public class NotificationHelper extends BroadcastReceiver {
 
 		// If empty, cancel
 		if (notifications.isEmpty()) {
+			Log.i(TAG, "NotifyPast.Notification is empty @ NotificationHelper Ln#111");
 			// cancelAll permanent notifications here if/when that is
 			// implemented. Don't touch others.
 			// Dont do this, it clears location
 			// notificationManager.cancelAll();
 		}
 		else {
+			Log.i(TAG, "NotifyPast.Notification not empty @ NotificationHelper Ln#118");
 			// else, notify
 			// Fetch sound and vibrate settings
 			final SharedPreferences prefs = PreferenceManager
@@ -177,6 +181,7 @@ public class NotificationHelper extends BroadcastReceiver {
 	private static NotificationCompat.Builder getNotificationBuilder(final Context context,
 			final int lightAndVibrate, final Uri ringtone,
 			final boolean alertOnce) {
+        Log.i(TAG, "Notification Builder @ NotificationHelper Ln#183");
 		final NotificationCompat.Builder builder = new NotificationCompat.Builder(
 				context)
 				.setWhen(0)
@@ -239,6 +244,7 @@ public class NotificationHelper extends BroadcastReceiver {
 	private static List<com.nononsenseapps.notepad.data.model.sql.Notification> getDuplicates(
 			final com.nononsenseapps.notepad.data.model.sql.Notification first,
 			final List<com.nononsenseapps.notepad.data.model.sql.Notification> notifications) {
+        Log.i(TAG, "Get Duplicates @ NotificationHelper Ln#247");
 		final ArrayList<com.nononsenseapps.notepad.data.model.sql.Notification> dups = new ArrayList<com.nononsenseapps.notepad.data.model.sql.Notification>();
 
 		for (com.nononsenseapps.notepad.data.model.sql.Notification noti : notifications) {
