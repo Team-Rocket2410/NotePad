@@ -409,7 +409,8 @@ public class TaskListFragment extends Fragment
 
         // Get the global list settings
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
+        Log.i(TAG, "Ln#474, TaskListFragment.TaskListFragment.onActivityCreated(final Bundle state) getting the global list settings" +
+                "\nby calling SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity())");
         mCallback = new LoaderCallbacks<Cursor>() {
             @Override
             public Loader<Cursor> onCreateLoader(int id, Bundle arg1) {
@@ -464,6 +465,9 @@ public class TaskListFragment extends Fragment
             public void onLoadFinished(Loader<Cursor> loader, Cursor c) {
                 if (loader.getId() == LOADER_TASKS) {
                     mAdapter.swapCursor(c);
+                    Log.i(TAG, "Ln#474, TaskListFragment.TaskListFragment.onLoadFinished(Loader<Cursor> loader, Cursor c)" +
+                            "\nif(loader.getId() == LOADER_TASKS) calls: mAdapter.swapCursor(c)" +
+                            "\nloader.getID() is: " + loader.getId() + "and LOADER_TASKS is: " + LOADER_TASKS);
                 }
             }
 
@@ -471,6 +475,9 @@ public class TaskListFragment extends Fragment
             public void onLoaderReset(Loader<Cursor> loader) {
                 if (loader.getId() == LOADER_TASKS) {
                     mAdapter.swapCursor(null);
+                    Log.i(TAG, "Ln#474, TaskListFragment.TaskListFragment.onLoaderReset(Loader<Cursor> loader)" +
+                            "\nif(loader.getId() == LOADER_TASKS) calls: mAdapter.swapCursor(null)" +
+                            "\nloader.getID() is: " + loader.getId() + "and LOADER_TASKS is: " + LOADER_TASKS);
                 }
             }
         };
@@ -514,6 +521,9 @@ public class TaskListFragment extends Fragment
     public void onDestroy() {
         super.onDestroy();
         getLoaderManager().destroyLoader(0);
+        Log.i(TAG, "Ln#518, TaskListFragment.TaskListFragment.onDestroy() calls:" +
+                "\nsuper.onDestroy() and getLoaderManager().destroyLoader(0)" +
+                "\nWHAT IF number in destroyLoader(0) was changed???????????????????");
     }
 
     @Override
@@ -549,6 +559,9 @@ public class TaskListFragment extends Fragment
             case R.id.menu_clearcompleted:
                 if (mListId != -1) {
                     DialogDeleteCompletedTasks.showDialog(getFragmentManager(), mListId, null);
+                    Log.i(TAG, "Ln#552, TaskListFragment.TaskListFragment.onOptionsItemSelected" +
+                            "\ninside case R.id.menu_clearcompleted and if(mListId != -1) calls:" +
+                            "\nDialogDeleteCompletedTasks.showDialog(getFragmentManager(), mListId, null)");
                 }
                 return true;
             default:
@@ -584,9 +597,13 @@ public class TaskListFragment extends Fragment
     @Override
     public void onSyncStartStop(boolean ongoing) {
         mSwipeRefreshLayout.setRefreshing(ongoing);
+        Log.i(TAG, "Ln#588, TaskListFragment.TaskListFragment.onSyncStartStop(boolean ongoing) which calls" +
+                "\nmSwipeRefreshLayout.setRefreshing(ongoing)");
     }
 
     public ItemTouchHelper getTouchHelper() {
+        Log.i(TAG, "Ln#590, TaskListFragment.TaskListFragment.getTouchHelper() which returns" +
+                "\ntouchHelper");
         return touchHelper;
     }
 
@@ -607,6 +624,8 @@ public class TaskListFragment extends Fragment
     }
 
     public long getListId() {
+        Log.i(TAG, "Ln#610, TaskListFragment.TaskListFragment.getListId() which returns" +
+                "\nmListId which is: " + mListId);
         return mListId;
     }
 
@@ -629,21 +648,30 @@ public class TaskListFragment extends Fragment
         if (itemId == R.id.menu_delete) {
             deleteTasks(selectedItemHandler.getSelected());
             finish = true;
+            Log.i(TAG, "Ln#632, TaskListFragment.TaskListFragment.onActionItemClicked if (itemId == R.id.menu_delete)" +
+                    "\ncalls deleteTasks(selectedItemHandler.getSelected())");
         }
         else if (itemId == R.id.menu_switch_list) {
             // show move to list dialog
             DialogMoveToList.getInstance(selectedItemHandler.getSelected())
                     .show(getFragmentManager(), "move_to_list_dialog");
             finish = true;
+            Log.i(TAG, "Ln#640, TaskListFragment.TaskListFragment.onActionItemClicked if (itemId == R.id.menu_switch_list)" +
+                    "\ncalls DialogMoveToList.getInstance(selectedItemHandler.getSelected())\n" +
+                    "                    .show(getFragmentManager(), \"move_to_list_dialog\")");
         } else if (itemId == R.id.menu_share) {
             shareSelected(selectedItemHandler.getSelected());
             finish = true;
+            Log.i(TAG, "Ln#646, TaskListFragment.TaskListFragment.onActionItemClicked if (itemId == R.id.menu_share)" +
+                            "\ncalls shareSelected(selectedItemHandler.getSelected())");
         } else {
             finish = false;
         }
 
         if (finish) {
             actionMode.finish(); // Action picked, so close the CAB
+            Log.i(TAG, "Ln#654, TaskListFragment.TaskListFragment.onActionItemClicked if (finish)" +
+                    "\ncalls actionMode.finish(); // Action picked, so close the CAB");
         }
         return finish;
     }
@@ -700,6 +728,9 @@ public class TaskListFragment extends Fragment
         //jonas
         selectedItemHandler.clear();
         mAdapter.notifyDataSetChanged();
+        Log.i(TAG, "Ln#712, TaskListFragment.TaskListFragment.onDestroyActionMode(ActionMode actionMode) calls" +
+                "\nselectedItemHandler.clear() and" +
+                "\nmAdapter.notifyDataSetChanged()");
     }
 
     /**

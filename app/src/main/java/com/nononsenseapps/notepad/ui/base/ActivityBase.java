@@ -55,7 +55,7 @@ public abstract class ActivityBase extends AppCompatActivity {
                 .registerOnSharedPreferenceChangeListener(mThemeLocaleChangeListener);
         Log.i(TAG, "ln#56, ActivityBase.onCreate calls useConfiguration();\n" + "// super.onCreate(savedInstanceState) " +
                 " // PreferenceManager.getDefaultSharedPreferences(this)\n" +
-                ".registerOnSharedPreferenceChangeListener(mThemeLocaleChangeListener) where mThemeLocaleChangeListener is: " + mThemeLocaleChangeListener);
+                ".registerOnSharedPreferenceChangeListener(mThemeLocaleChangeListener) where mThemeLocaleChangeListener is:\n" + mThemeLocaleChangeListener);
     }
 
     protected void useConfiguration() {
@@ -67,9 +67,9 @@ public abstract class ActivityBase extends AppCompatActivity {
     protected void onDestroy() {
         PreferenceManager.getDefaultSharedPreferences(this)
                 .unregisterOnSharedPreferenceChangeListener(mThemeLocaleChangeListener);
-        Log.i(TAG, "ln#68, ActivityBase.onDestroy calls PreferenceManager.getDefaultSharedPreferences(this)\n" +
+        Log.i(TAG, "ln#70, ActivityBase.onDestroy calls PreferenceManager.getDefaultSharedPreferences(this)\n" +
                 ".unregisterOnSharedPreferenceChangeListener(mThemeLocaleChangeListener) and" +
-                "mThemeLocaleChangeListener is: " + mThemeLocaleChangeListener);
+                "mThemeLocaleChangeListener is:\n" + mThemeLocaleChangeListener);
         super.onDestroy();
 
     }
