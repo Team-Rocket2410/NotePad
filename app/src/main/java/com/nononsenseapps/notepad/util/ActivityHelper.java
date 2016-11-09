@@ -23,6 +23,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.nononsenseapps.notepad.R;
 
@@ -32,6 +33,7 @@ import java.util.Locale;
  * This class contains some helper methods for activities.
  */
 public class ActivityHelper {
+    private final static String TAG = "RICKSMESSAGE";
     /**
      * Set up the activity according to the user's configuration.
      * Sets the fullscreen theme and language of the activity.
@@ -64,11 +66,16 @@ public class ActivityHelper {
 
         if (dark.equals(selectedTheme)) {
             context.setTheme(fullscreen ? R.style.DarkTheme : R.style.DarkTheme_DialogWhenLarge);
+            Log.i(TAG, "Ln#69, util/ActivityHelper.setSelectedTheme if(dark.equals(selectedTheme)) then" +
+                    "\ncontext.setTheme(fullscreen ? R.style.LightTheme : R.style.LightTheme_DialogWhenLarge)\n\n");
         } else if (black.equals(selectedTheme)) {
             context.setTheme(fullscreen ? R.style.BlackTheme : R.style.BlackTheme_DialogWhenLarge);
+            Log.i(TAG, "Ln#72, util/ActivityHelper.setSelectedTheme if(black.equals(selectedTheme)) then" +
+                    "\ncontext.setTheme(fullscreen ? R.style.LightTheme : R.style.LightTheme_DialogWhenLarge)\n\n");
         } else {
             // light
             context.setTheme(fullscreen ? R.style.LightTheme : R.style.LightTheme_DialogWhenLarge);
+            Log.i(TAG, "Ln#76, util/ActivityHelper.setSelectedTheme if(light.equals(selectedTheme))context.setTheme(fullscreen ? R.style.LightTheme : R.style.LightTheme_DialogWhenLarge)\n\n");
         }
     }
 

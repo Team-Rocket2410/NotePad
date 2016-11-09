@@ -289,7 +289,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
                 break;
         }
         Log.i(TAG, "Ln# 291, NavigationDrawerFragment.onLoadFinished(Loader<Cursor> loader, Cursor c) switch(loader.getId) that on LOADER" +
-                "\nNAVDRAWER_LISTS and calls mAdapter.setData(c) and loader.getId() is: \n" + loader.getId());
+                "\nNAVDRAWER_LISTS and calls mAdapter.setData(c) and loader.getId() is: " + loader.getId() + "\n\n");
     }
 
     /**
@@ -402,26 +402,26 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
                     ((CursorViewHolder) holder).bind(mCursor);
                     break;
             }
-            Log.i(TAG, "Ln#404, NavigationDrawerFragment.onCreateViewHolder switchcase(holder.getItemViewType()) // " +
+            Log.i(TAG, "Ln#405, NavigationDrawerFragment.onCreateViewHolder switchcase(holder.getItemViewType()) // " +
                     "some cases use position which is: " + position + " and RecyclerView.ViewHolder" +
-                    "holder which is: ??"); // + holder);
+                    "holder which is: ??\n\n"); // + holder);
         }
 
         @Override
         public int getItemViewType(int position) {
             if (isHeader(position)) {
-                Log.i(TAG, "Ln#412, NavigationDrawerFragment.getItemViewType if (isHeader(position))" +
+                Log.i(TAG, "Ln#413, NavigationDrawerFragment.getItemViewType if (isHeader(position))" +
                         " it returns headers[position].getViewType()" +
-                        "\nand uses position which is: " + position);
+                        "\nand uses position which is: " + position + "\n\n");
                 return headers[position].getViewType();
             } else if (isFooter(position)) {
-                Log.i(TAG, "Ln#417, NavigationDrawerFragment.getItemViewType if (isFooter(position))" +
+                Log.i(TAG, "Ln#418, NavigationDrawerFragment.getItemViewType if (isFooter(position))" +
                         " it returns footers[actualPosition(position)].getViewType()" +
-                        "\nand uses position which is: " + position);
+                        "\nand uses position which is: " + position + "\n\n");
                 return footers[actualPosition(position)].getViewType();
             } else {
-                Log.i(TAG, "Ln#422, NavigationDrawerFragment.getItemViewType else it returns VIEWTYPE_ITEM" +
-                        "\nand uses VIEWTYPE_ITEM which is: " + VIEWTYPE_ITEM);
+                Log.i(TAG, "Ln#423, NavigationDrawerFragment.getItemViewType else it returns VIEWTYPE_ITEM" +
+                        "\nand uses VIEWTYPE_ITEM which is: " + VIEWTYPE_ITEM + "\n\n");
                 return VIEWTYPE_ITEM;
             }
         }
@@ -440,7 +440,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
                 return footers[actualPosition(position)].getItemId();
             } else {
                 Log.i(TAG, "Ln#441, NavigationDrawerFragment.getItemId else it returns mCursor.getLong(0)" +
-                        "\nand uses mCursor.getLong(0) which is: " + mCursor.getLong(0));
+                        "\nand uses mCursor.getLong(0) which is: ");// + mCursor.getLong(0));
                 mCursor.moveToPosition(actualPosition(position));
                 return mCursor.getLong(0);
             }
@@ -452,8 +452,9 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
             if (mCursor != null) {
                 result += mCursor.getCount();
             }
-            Log.i(TAG, "Ln#454, NavigationDrawerFragment.getItemCount sets result = headers.length + footers.length which is: " + result
-                    + "\nand if(mCursor != null) which is: " + (mCursor != null) + " then result += mCursor.getCount() and returns result which is now: " + result + "\n\n");
+            Log.i(TAG, "Ln#455, NavigationDrawerFragment.getItemCount sets result = headers.length + footers.length"
+                    + "\nand if(mCursor != null) which is: " + (mCursor != null) + " then result += mCursor.getCount()" +
+                    "\nand returns result which is now: " + result + "\n\n");
             return result;
         }
 
@@ -528,21 +529,21 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
                 result = SharedPreferencesHelper.getSdDir(getActivity());
             }
             Log.i(TAG, "Ln#530, NavigationDrawerFragment.TopLevelItem.getAvatarName sets" +
-                    "\nresult = SharedPreferencesHelper.getGoogleAccount(getActivity()) for if 1 which is: " + result+
-                    "\nor SharedPreferencesHelper.getDropboxAccount(getActivity()) for if 2 which is: " + result +
-                    "\nor SharedPreferencesHelper.getSdDir(getActivity()) for if 3 which is now: " + result);
+                    "\nresult = SharedPreferencesHelper.getGoogleAccount(getActivity()) for if 1" +
+                    "\nor SharedPreferencesHelper.getDropboxAccount(getActivity()) for if 2" +
+                    "\nor SharedPreferencesHelper.getSdDir(getActivity()) for if 3 which is now: " + result + "\n\n");
             return result;
         }
 
         @Override
         public long getItemId() {
-            Log.i(TAG, "Ln#539, NavigationDrawerFragment.TopLevelItem.getItemId returns 0");
+            Log.i(TAG, "Ln#539, NavigationDrawerFragment.TopLevelItem.getItemId returns 0\n\n");
             return 0;
         }
 
         @Override
         public int getViewType() {
-            Log.i(TAG, "Ln#545, NavigationDrawerFragment.TopLevelItem.getViewType returns VIEWTYPE_TOPLEVEL, which is: " + VIEWTYPE_TOPLEVEL);
+            Log.i(TAG, "Ln#545, NavigationDrawerFragment.TopLevelItem.getViewType returns VIEWTYPE_TOPLEVEL, which is: " + VIEWTYPE_TOPLEVEL + "\n\n");
             return VIEWTYPE_TOPLEVEL;
         }
     }
@@ -556,23 +557,23 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
             this.mTitleRes = title;
             Log.i(TAG, "Ln#557, NavigationDrawerFragment.ExtraHeaderItem.ExtraHeaderItem constructor sets:" +
                     "\nthis.mId = id, which is " + id +
-                    "\nthis.mTitleRes = title, which is: " + title);
+                    "\nthis.mTitleRes = title, which is: " + title + "\n\n");
         }
 
         public String getTitle() {
-            Log.i(TAG, "Ln#563, NavigationDrawerFragment.ExtraHeaderItem.getTitle returns getString(mTitleRes) which is: ??" + getString(mTitleRes));
+            Log.i(TAG, "Ln#563, NavigationDrawerFragment.ExtraHeaderItem.getTitle returns getString(mTitleRes) which is: " + getString(mTitleRes) + "\n\n");
             return getString(mTitleRes);
         }
 
         @Override
         public long getItemId() {
-            Log.i(TAG, "Ln#569, NavigationDrawerFragment.ExtraHeaderItem.getItemId returns mId which is: " + mId);
+            Log.i(TAG, "Ln#569, NavigationDrawerFragment.ExtraHeaderItem.getItemId returns mId which is: " + mId + "\n\n");
             return mId;
         }
 
         @Override
         public int getViewType() {
-            Log.i(TAG, "Ln#575, NavigationDrawerFragment.ExtraHeaderItem.getViewType returns VIEWTYPE_EXTRA_HEADER_ITEM which is: " + VIEWTYPE_EXTRA_HEADER_ITEM);
+            Log.i(TAG, "Ln#575, NavigationDrawerFragment.ExtraHeaderItem.getViewType returns VIEWTYPE_EXTRA_HEADER_ITEM which is: " + VIEWTYPE_EXTRA_HEADER_ITEM + "\n\n");
             return VIEWTYPE_EXTRA_HEADER_ITEM;
         }
 
@@ -683,7 +684,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
             mText1 = (TextView) itemView.findViewById(android.R.id.text1);
             Log.i(TAG, "Ln#684, NavigationDrawerFragment.TopLevelItemViewHolder.TopLevelItemViewHolder which sets " +
                     "\nmAvatar = (ImageView) itemView.findViewById(R.id.main_avatar) which is: ??" + // mAvatar +
-                    "\nmText1 = (TextView) itemView.findViewById(android.R.id.text1) which is: ??"); // + mText1);
+                    "\nmText1 = (TextView) itemView.findViewById(android.R.id.text1) which is: ??\n\n"); // + mText1);
         }
 
         public void bind(TopLevelItem topLevelItem) {
@@ -697,12 +698,12 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
                     "\nimageName = (name.isEmpty() || name.startsWith(/)) ? N : name which is: " + imageName +
                     "\nTextDrawable drawable = TextDrawable.builder().buildRound(imageName.toUpperCase().substring(0, 1), " +
                     "\n                             ColorGenerator.MATERIAL.getColor(imageName)) " +
-                    "\nwhich is: ??"); // + drawable);
+                    "\nwhich is: ??\n\n"); // + drawable);
             mAvatar.setImageDrawable(drawable);
             mText1.setText(name);
             Log.i(TAG, "Ln#703, NavigationDrawerFragment.TopLevelItemViewHolder.bind(TopLevelItem topLevelItem) which calls " +
                     "\nmAvatar.setImageDrawable(drawable) and " +
-                    "\nmText1.setText(name)");
+                    "\nmText1.setText(name)\n\n");
         }
     }
 
@@ -722,7 +723,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
             Log.i(TAG, "Ln#722, NavigationDrawerFragment.ExtraHeaderItemViewHolder ExtraHeaderItemViewHolder(View itemView) constructor sets:" +
                     "\nmTitle = (TextView) itemView.findViewById(android.R.id.text1)" +
                     "\nmCount = (TextView) itemView.findViewById(android.R.id.text2)" +
-                    "\nmAvatar = (ImageView) itemView.findViewById(R.id.item_avatar)");
+                    "\nmAvatar = (ImageView) itemView.findViewById(R.id.item_avatar)\n\n");
         }
 
         public void bind(ExtraHeaderItem headerItem) {
@@ -738,7 +739,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
                     "\nTextDrawable drawable = TextDrawable.builder().buildRound(mItem.getTitle().toUpperCase().substring(0, 1), " +
                     "\n                             ColorGenerator.MATERIAL.getColor(mItem.getTitle())) " +
                     "\nwhich is: ??" +
-                    "\nthen calls mAvatar.setImageDrawable(drawable)");
+                    "\nthen calls mAvatar.setImageDrawable(drawable)\n\n");
             mAvatar.setImageDrawable(drawable);
         }
 
@@ -751,7 +752,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
             Log.i(TAG, "Ln#748, NavigationDrawerFragment.ExtraHeaderItemViewHolder.onClick(View v) calls" +
                     "\nPreferenceManager.getDefaultSharedPreferences(getContext()).edit().putLong(TaskListFragment.LIST_ALL_ID_PREF_KEY, mItem.mId).commit()" +
                     "\nmCallbacks.openList(mItem.mId)" +
-                    "\nmDrawerLayout.closeDrawers()");
+                    "\nmDrawerLayout.closeDrawers()\n\n");
         }
     }
 

@@ -110,6 +110,7 @@ public class TaskListFragment extends Fragment
         TaskListFragment f = new TaskListFragment();
         Bundle args = new Bundle();
         args.putLong(LIST_ID, listId);
+
         f.setArguments(args);
         return f;
     }
