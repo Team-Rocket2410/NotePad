@@ -193,7 +193,7 @@ public class ActivityList extends ActivityBase implements NavigationDrawerFragme
                 + getSupportFragmentManager() + " //.beginTransaction().replace(R.id.listfragment_container," +
                 " TaskListFragment.getInstance(id)).commit()\n\n");
     }
-
+    //I believe this can lead to the application of list names when viewing lists^^^
     @Override
     public void createList() {
         DialogEditList dialog = DialogEditList.getInstance();
