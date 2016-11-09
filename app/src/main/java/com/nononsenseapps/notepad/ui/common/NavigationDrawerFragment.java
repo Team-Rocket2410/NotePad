@@ -307,7 +307,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
                 break;
         }
         Log.i(TAG, "Ln#309, NavigationDrawerFragment.onLoaderReset switch(loader.getId) that if case is LOADER_NAVDRAWER_LISTS" +
-                "\nit calls mAdapter.setData(null) and loader.getId() is: \n" + loader.getId());
+                "\nit calls mAdapter.setData(null) and loader.getId() is: \n" + loader.getId() + "\n\n");
     }
 
     public interface NavigationDrawerCallbacks {
@@ -348,7 +348,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
             mCursor = cursor;
             notifyDataSetChanged();
             Log.i(TAG, "Ln#350, NavigationDrawerFragment.setData sets mCursor = cursor,"
-                    + " and calls notifyDataSetChanged()");
+                    + " and calls notifyDataSetChanged()\n\n");
         }
 
         @Override
@@ -379,7 +379,8 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
                     break;
             }
             Log.i(TAG, "Ln#381, NavigationDrawerFragment.onCreateViewHolder switchcase uses viewType which is: "
-                    + viewType + " and parent which is: ??" + parent + " and \nuses both to set and return vh which is:\n" + vh);
+                    + viewType + " and parent which is: " + parent + " and" +
+                    "\nuses both to set and return vh which is:" + vh + "\n\n");
             return vh;
         }
 
@@ -430,16 +431,16 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
             if (isHeader(position)) {
                 Log.i(TAG, "Ln#431, NavigationDrawerFragment.getItemId if(isHeader(position)) it returns headers[position].getItemId()" +
                         "\nand uses position which is: " + position + "// \nand headers[position].getItemId()" +
-                        " is: ??" + headers[position].getItemId());
+                        " is: " + headers[position].getItemId());
                 return headers[position].getItemId();
             } else if (isFooter(position)) {
                 Log.i(TAG, "Ln#436, NavigationDrawerFragment.getItemId if(isFooter(position)) it" +
                         "\nreturns footers[actualPosition(position)].getItemId() and uses position which is: " + position +
-                        "\nand footers[actualPosition(position)].getItemId() is: ??" + footers[actualPosition(position)].getItemId());
+                        "\nand footers[actualPosition(position)].getItemId() is: " + footers[actualPosition(position)].getItemId());
                 return footers[actualPosition(position)].getItemId();
             } else {
                 Log.i(TAG, "Ln#441, NavigationDrawerFragment.getItemId else it returns mCursor.getLong(0)" +
-                        "\nand uses mCursor.getLong(0) which is: ??"); // + mCursor.getLong(0));
+                        "\nand uses mCursor.getLong(0) which is: " + mCursor.getLong(0));
                 mCursor.moveToPosition(actualPosition(position));
                 return mCursor.getLong(0);
             }
@@ -452,8 +453,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
                 result += mCursor.getCount();
             }
             Log.i(TAG, "Ln#454, NavigationDrawerFragment.getItemCount sets result = headers.length + footers.length which is: " + result
-                    + "\nand if(mCursor != null) which is: ?? then result +=" +
-                    " mCursor.getCount() and returns result which is now: ??"); // + result);
+                    + "\nand if(mCursor != null) which is: " + (mCursor != null) + " then result += mCursor.getCount() and returns result which is now: " + result + "\n\n");
             return result;
         }
 
