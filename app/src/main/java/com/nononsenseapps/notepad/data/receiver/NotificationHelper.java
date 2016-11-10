@@ -204,6 +204,7 @@ public class NotificationHelper extends BroadcastReceiver {
 	private static void makeUnique(
 			final Context context,
 			final List<com.nononsenseapps.notepad.data.model.sql.Notification> notifications) {
+		Log.i(TAG, "makeUnique @ NotificationHelper Ln#207");
 		// get duplicates and iterate over them
 		for (com.nononsenseapps.notepad.data.model.sql.Notification noti : getLatestOccurence(notifications)) {
 			// remove all but the first one from database, and big list
