@@ -41,7 +41,9 @@ public abstract class ActivityBase extends AppCompatActivity {
             if (key.equals(getString(R.string.const_preference_theme_key)) || key.equals
                     (getString(R.string.const_preference_locale_key))) {
                 onThemeOrLocaleChange();
-                Log.i(TAG, "ln#44, ActivityBase.onSharedPreferenceChanged calls onThemeOrLocaleChange() in if()");
+                Log.i(TAG, "ln#44, ActivityBase.onSharedPreferenceChanged calls onThemeOrLocaleChange() in if()" +
+                        "\nkey which is: " + key + ".equals" +
+                        "\ngetString(R.string.const_preference_locale_key) which is: " + getString(R.string.const_preference_locale_key)  + "\n\n");
             }
         }
     };
@@ -55,21 +57,21 @@ public abstract class ActivityBase extends AppCompatActivity {
                 .registerOnSharedPreferenceChangeListener(mThemeLocaleChangeListener);
         Log.i(TAG, "ln#56, ActivityBase.onCreate calls useConfiguration();\n" + "// super.onCreate(savedInstanceState) " +
                 " // PreferenceManager.getDefaultSharedPreferences(this)\n" +
-                ".registerOnSharedPreferenceChangeListener(mThemeLocaleChangeListener) where mThemeLocaleChangeListener is: " + mThemeLocaleChangeListener);
+                ".registerOnSharedPreferenceChangeListener(mThemeLocaleChangeListener) where mThemeLocaleChangeListener is: " + mThemeLocaleChangeListener + "\n\n");
     }
 
     protected void useConfiguration() {
         ActivityHelper.useUserConfigurationFullscreen(this);
-        Log.i(TAG, "ln#61, ActivityBase.useConfiguration ActivityHelper.useUserConfigurationFullscreen(this)");
+        Log.i(TAG, "ln#61, ActivityBase.useConfiguration ActivityHelper.useUserConfigurationFullscreen(this)\n\n");
     }
 
     @Override
     protected void onDestroy() {
         PreferenceManager.getDefaultSharedPreferences(this)
                 .unregisterOnSharedPreferenceChangeListener(mThemeLocaleChangeListener);
-        Log.i(TAG, "ln#68, ActivityBase.onDestroy calls PreferenceManager.getDefaultSharedPreferences(this)\n" +
+        Log.i(TAG, "ln#70, ActivityBase.onDestroy calls PreferenceManager.getDefaultSharedPreferences(this)\n" +
                 ".unregisterOnSharedPreferenceChangeListener(mThemeLocaleChangeListener) and" +
-                "mThemeLocaleChangeListener is: " + mThemeLocaleChangeListener);
+                "mThemeLocaleChangeListener is: " + mThemeLocaleChangeListener + "\n\n");
         super.onDestroy();
 
     }
@@ -80,11 +82,10 @@ public abstract class ActivityBase extends AppCompatActivity {
             shouldRestart = false;
             restartActivity();
             Log.i(TAG, "ln#80, ActivityBase.onResume in if(shouldRestart) sets shouldRestart to false" +
-                    "and calls restartActivity()");
+                    "and calls restartActivity()\n\n");
         }
-        Log.i(TAG, "ln#83, ActivityBase.onResume calls super.onResume()");
+        Log.i(TAG, "ln#83, ActivityBase.onResume calls super.onResume()\n\n");
         super.onResume();
-
     }
 
     /**
@@ -98,8 +99,9 @@ public abstract class ActivityBase extends AppCompatActivity {
         finish();
         overridePendingTransition(0, 0);
         startActivity(intent);
-        Log.i(TAG, "ln#96, ActivityBase.restartActivity Restarts the activity using the same intent" +
-                "that started it. Disables animations to get a seamless restart.");
+        Log.i(TAG, "ln#96, ActivityBase.restartActivity Restarts the activity using the same intent which is:\n" +
+                intent +
+                "\nthat started it. Disables animations to get a seamless restart.\n\n");
     }
 
     /**

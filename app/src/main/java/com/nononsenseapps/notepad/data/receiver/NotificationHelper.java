@@ -291,7 +291,7 @@ public class NotificationHelper extends BroadcastReceiver {
 		PendingIntent completeIntent = PendingIntent.getBroadcast(context, 0,
 				new Intent(ACTION_COMPLETE, note.getUri()).putExtra(ARG_TASKID,
 						note.taskID), PendingIntent.FLAG_UPDATE_CURRENT);
-        Log.i(TAG, "Action to Complete @ NotificationHelper Ln#294");
+        //Log.i(TAG, "Action to Complete @ NotificationHelper Ln#294");
 
 		// Action to snooze
 		PendingIntent snoozeIntent = PendingIntent.getBroadcast(context, 0,
@@ -305,7 +305,7 @@ public class NotificationHelper extends BroadcastReceiver {
 				.setStyle(
 						new NotificationCompat.BigTextStyle()
 								.bigText(note.taskNote));
-        Log.i(TAG, "Build notifications at NotificationHelper Ln# 307");
+        //Log.i(TAG, "Build notifications at NotificationHelper Ln# 307");
 
 		// Delete intent on non-location repeats
 		builder.setDeleteIntent(deleteIntent);
