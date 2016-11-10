@@ -29,9 +29,14 @@ import com.nononsenseapps.notepad.ui.list.ActivityList;
 
 public class DialogDeleteList extends DialogConfirmBase {
 	static final String ID = "id";
+<<<<<<< HEAD
 	static final String TAG2 = "deletelistok";
 	static final String TAG = "RICKSMESSAGE";
 	private NavigationDrawerFragment.NavigationDrawerCallbacks mCallbacks;
+=======
+	static final String TAG = "deletelistok";
+	static final String TAG2 = "RICKSMESSAGE";
+>>>>>>> Rick-Ammon-Changes
 
 	public static void showDialog(final FragmentManager fm, final long listId, final DialogConfirmedListener listener) {
 		DialogDeleteList d = new DialogDeleteList();
@@ -39,8 +44,14 @@ public class DialogDeleteList extends DialogConfirmBase {
 		Bundle args = new Bundle();
 		args.putLong(ID, listId);
 		d.setArguments(args);
+<<<<<<< HEAD
 		d.show(fm, TAG2);
 		Log.i(TAG, "Ln#42, DialogDeleteList.DialogDeleteList.showDialog(final FragmentManager fm, final long listId, final DialogConfirmedListener listener)");
+=======
+		d.show(fm, TAG);
+		Log.i(TAG2, "Ln#41, DialogDeleteList.DialogDeleteList.showDialog(final FragmentManager fm, final long listId, final DialogConfirmedListener listener)" +
+				"\ncreates new dialogDeleteList instance, creates a listener for it and shows it");
+>>>>>>> Rick-Ammon-Changes
 	}
 
 	@Override
