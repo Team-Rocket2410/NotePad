@@ -189,8 +189,8 @@ public class ActivityList extends ActivityBase implements NavigationDrawerFragme
         invalidateOptionsMenu();
         getSupportFragmentManager().beginTransaction().replace(R.id.listfragment_container, TaskListFragment.getInstance(id)).commit();
         Log.i(TAG, "ln#191, ActivityList.openList(long id) id is: " + id + " && calls mCurrentList = id"
-                + "\ninvalidateOptionsMenu(); // getSupportFragmentManager(this returns mFragments.getSupportFragmentManager())which is:\n"
-                + getSupportFragmentManager() + " //.beginTransaction().replace(R.id.listfragment_container," +
+                + "\ninvalidateOptionsMenu(); // getSupportFragmentManager(this returns \nmFragments.getSupportFragmentManager())which is:\n"
+                + getSupportFragmentManager() + " //\n.beginTransaction().replace(R.id.\nlistfragment_container," +
                 " TaskListFragment.getInstance(id)).commit()\n\n");
     }
 
