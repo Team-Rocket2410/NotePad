@@ -120,7 +120,7 @@ public class ActivityList extends ActivityBase implements NavigationDrawerFragme
         }
         outState.putLong(START_LIST_ID, mCurrentList);
         super.onSaveInstanceState(outState);
-        Log.i(TAG, "ln#123, ActivityList.onSaveInstanceState calls--maybe delete list issue area--");
+        Log.i(TAG, "ln#123, ActivityList.onSaveInstanceState calls\n\n");
     }
 
     private void handleArgs(Bundle savedInstanceState) {
@@ -134,7 +134,7 @@ public class ActivityList extends ActivityBase implements NavigationDrawerFragme
 
         openList(mListIdToSelect);
         Log.i(TAG, "ln#136, ActivityList.handleArgs gets mListIdToSelect which is: " + mListIdToSelect +
-                " and calls openList(mListIdToSelect) ??so possible start point??");
+                " and calls openList(mListIdToSelect)\n\n");
     }
 
     @Override
@@ -188,10 +188,10 @@ public class ActivityList extends ActivityBase implements NavigationDrawerFragme
         mCurrentList = id;
         invalidateOptionsMenu();
         getSupportFragmentManager().beginTransaction().replace(R.id.listfragment_container, TaskListFragment.getInstance(id)).commit();
-        Log.i(TAG, "ln#191, ActivityList.openList(long id) id is: " + id + " && calls mCurrentList = id//"
-                + " invalidateOptionsMenu(); // getSupportFragmentManager(this returns mFragments.getSupportFragmentManager())which is: "
+        Log.i(TAG, "ln#191, ActivityList.openList(long id) id is: " + id + " && calls mCurrentList = id"
+                + "\ninvalidateOptionsMenu(); // getSupportFragmentManager(this returns mFragments.getSupportFragmentManager())which is:\n"
                 + getSupportFragmentManager() + " //.beginTransaction().replace(R.id.listfragment_container," +
-                " TaskListFragment.getInstance(id)).commit()");
+                " TaskListFragment.getInstance(id)).commit()\n\n");
     }
 
     @Override
