@@ -20,15 +20,14 @@ package com.nononsenseapps.notepad.ui.common;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.widget.Toast;
-import android.util.Log;
 
 import com.nononsenseapps.notepad.R;
 import com.nononsenseapps.notepad.data.model.sql.TaskList;
 import com.nononsenseapps.notepad.ui.base.DialogConfirmBase;
-import com.nononsenseapps.notepad.ui.list.ActivityList;
 
 public class DialogDeleteList extends DialogConfirmBase {
 	static final String ID = "id";
+<<<<<<< HEAD
 <<<<<<< HEAD
 	static final String TAG2 = "deletelistok";
 	static final String TAG = "RICKSMESSAGE";
@@ -37,6 +36,9 @@ public class DialogDeleteList extends DialogConfirmBase {
 	static final String TAG = "deletelistok";
 	static final String TAG2 = "RICKSMESSAGE";
 >>>>>>> Rick-Ammon-Changes
+=======
+	static final String TAG = "deletelistok";
+>>>>>>> parent of 1f2392c... Deletion Redirection
 
 	public static void showDialog(final FragmentManager fm, final long listId, final DialogConfirmedListener listener) {
 		DialogDeleteList d = new DialogDeleteList();
@@ -45,6 +47,7 @@ public class DialogDeleteList extends DialogConfirmBase {
 		args.putLong(ID, listId);
 		d.setArguments(args);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		d.show(fm, TAG2);
 		Log.i(TAG, "Ln#42, DialogDeleteList.DialogDeleteList.showDialog(final FragmentManager fm, final long listId, final DialogConfirmedListener listener)");
 =======
@@ -52,11 +55,13 @@ public class DialogDeleteList extends DialogConfirmBase {
 		Log.i(TAG2, "Ln#41, DialogDeleteList.DialogDeleteList.showDialog(final FragmentManager fm, final long listId, final DialogConfirmedListener listener)" +
 				"\ncreates new dialogDeleteList instance, creates a listener for it and shows it");
 >>>>>>> Rick-Ammon-Changes
+=======
+		d.show(fm, TAG);
+>>>>>>> parent of 1f2392c... Deletion Redirection
 	}
 
 	@Override
 	public int getTitle() {
-		Log.i(TAG, "Ln#46, DialogDeleteList.DialogDeleteList.getTitle() returns \"Delete?\"");
 		return R.string.delete_question;
 	}
 
@@ -73,19 +78,12 @@ public class DialogDeleteList extends DialogConfirmBase {
 							null, null)) {
 				Toast.makeText(getActivity(), R.string.deleted,
 						Toast.LENGTH_SHORT).show();
-				NavigationDrawerFragment.NavigationDrawerCallbacks gCallbacks;
-				gCallbacks = (NavigationDrawerFragment.NavigationDrawerCallbacks) getActivity();
-				gCallbacks.openList(-2);
-				Log.i(TAG, "Ln#64, DialogDeleteList.DialogDeleteList.onOKClick() if(if)) think deleted");
 			}
 		}
 		if (listener != null) {
 			listener.onConfirm();
-			Log.i(TAG, "Ln#69, DialogDeleteList.DialogDeleteList.onOKClick() single if() && if(listener != null)" +
-					"\ncalls listener != null");
 		}
 		getDialog().dismiss();
-
 	}
 
 }
