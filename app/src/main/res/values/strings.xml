@@ -20,7 +20,7 @@
 
     <string name="nononsense_notes" translatable="false">NoNonsense Notes</string>
     <string name="app_name">Notes</string>
-    <string name="title_create">New note</string>
+    <string name="All_Lists">All Lists</string>
     <string name="timemachine">Time machine</string>
     <string name="time">Time</string>
     <string name="done">Done</string>

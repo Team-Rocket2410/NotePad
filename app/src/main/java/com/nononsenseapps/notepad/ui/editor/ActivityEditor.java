@@ -29,12 +29,14 @@ import com.nononsenseapps.notepad.R;
 import com.nononsenseapps.notepad.data.local.sql.LegacyDBHelper;
 import com.nononsenseapps.notepad.data.model.sql.Task;
 import com.nononsenseapps.notepad.data.model.sql.TaskList;
+import android.util.Log;
 
 /**
  * Container for editor fragment. Only used on phones.
  */
 public class ActivityEditor extends ActivityEditorBase implements TaskDetailFragment
         .TaskEditorCallbacks {
+    private static final String TAG = "RICKSMESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +56,12 @@ public class ActivityEditor extends ActivityEditorBase implements TaskDetailFrag
     public boolean onOptionsItemSelected(MenuItem item) {
         if (android.R.id.home == item.getItemId()) {
             finish();
+            Log.i(TAG, "ln#59, ActivityEditor.onOptionsItemSelected(MenuItem item)" +
+                    "\nif(android.R.id.home == item.getItemId()) calls finish()");
             return true;
         } else {
+            Log.i(TAG, "ln#63, ActivityEditor.onOptionsItemSelected(MenuItem item)" +
+                    "\nelse returns super.onOptionsItemSelected(item) which is: "/* + super.onOptionsItemSelected(item)*/);
             return super.onOptionsItemSelected(item);
         }
     }
@@ -77,6 +83,8 @@ public class ActivityEditor extends ActivityEditorBase implements TaskDetailFrag
 
     @Override
     public long getListOfTask() {
+        Log.i(TAG, "ln#86, ActivityEditor.getListOfTask() returns getIntent().getLongExtra(TaskDetailFragment.ARG_ITEM_LIST_ID, -1)" +
+                "\nwhich is: " + getIntent().getLongExtra(TaskDetailFragment.ARG_ITEM_LIST_ID, -1));
         return getIntent().getLongExtra(TaskDetailFragment.ARG_ITEM_LIST_ID, -1);
     }
 
@@ -107,6 +115,7 @@ public class ActivityEditor extends ActivityEditorBase implements TaskDetailFrag
                 retval = Long.parseLong(intent.getData().getLastPathSegment());
             }
         }
+        Log.i(TAG, "ln#86, ActivityEditor.getNoteId(@NonNull final Intent intent) returns retval which is: " + retval);
         return retval;
     }
 }

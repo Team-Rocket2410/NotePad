@@ -17,7 +17,16 @@
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="All Lists"
+        android:padding="4dp"
+        android:layout_gravity="top"
+        android:id="@+id/listTitleBlock"/>
 
     <LinearLayout
         android:id="@+id/hintContainer"
@@ -36,6 +45,7 @@
 
     <include
         layout="@layout/include_tasklist"
+        android:id="@+id/listLayInclude"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
