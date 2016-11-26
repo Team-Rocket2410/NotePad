@@ -95,6 +95,7 @@ public class TaskList extends DAO {
 		}
 
 		public static final String TITLE = "title";
+		public static final String CURRENTLISTTITLE = "currentlisttitle";
 		public static final String UPDATED = "updated";
 		public static final String LISTTYPE = "tasktype";
 		public static final String SORTING = "sorting";
@@ -165,6 +166,7 @@ public class TaskList extends DAO {
 		this.updated = c.getLong(2);
 		this.listtype = c.getString(3);
 		this.sorting = c.getString(4);
+		Log.i(TAG, "Ln#169, TaskList.TaskList(final Cursor c) this.title = c.getString(1) is: " + this.title);
 		// sync stuff
 		// gtaskaccount = c.getString(3);
 		// gtaskid = c.getString(4);
@@ -174,12 +176,14 @@ public class TaskList extends DAO {
 
 	public TaskList(final Uri uri, final ContentValues values) {
 		this(Long.parseLong(uri.getLastPathSegment()), values);
+		Log.i(TAG, "Ln#178, TaskList.TaskList(final Uri uri, final ContentValues values)");
+
 	}
 
 	public TaskList(final long id, final ContentValues values) {
 		this(values);
 		this._id = id;
-		Log.i(TAG, "Ln#182, TaskList.TaskList.TaskList(final long id, final ContentValues values) calls:" +
+		Log.i(TAG, "Ln#185, TaskList.TaskList.TaskList(final long id, final ContentValues values) calls:" +
 				"\nthis(values) and" +
 				"\nthis._id = id which id is " + id);
 	}
@@ -200,7 +204,7 @@ public class TaskList extends DAO {
 		updated = values.getAsLong(Columns.UPDATED);
 		listtype = values.getAsString(Columns.LISTTYPE);
 		sorting = values.getAsString(Columns.SORTING);
-		Log.i(TAG, "Ln#203, TaskList.TaskList.TaskList(final ContentValues values) sets:" +
+		Log.i(TAG, "Ln#206, TaskList.TaskList.TaskList(final ContentValues values) sets:" +
 				"\ntitle = values.getAsString(Columns.TITLE) which is: " + title +
 				"\nupdated = values.getAsLong(Columns.UPDATED) which is: " + updated +
 				"\nlisttype = values.getAsString(Columns.LISTTYPE) which is: " + listtype +
@@ -218,7 +222,8 @@ public class TaskList extends DAO {
 		values.put(Columns.UPDATED, updated);
 		values.put(Columns.LISTTYPE, listtype);
 		values.put(Columns.SORTING, sorting);
-
+		Log.i(TAG, "Ln#206, TaskList.TaskList.getContent() calls several like values.put(Columns.TITLE, title)" +
+				"\ntitle is: " + title);
 		// values.put(Columns.GTASKACCOUNT, gtaskaccount);
 		// values.put(Columns.GTASKID, gtaskid);
 		// values.put(Columns.DROPBOXACCOUNT, dropboxaccount);
@@ -229,7 +234,7 @@ public class TaskList extends DAO {
 
 	@Override
 	protected String getTableName() {
-		Log.i(TAG, "Ln#232, TaskList.TaskList.getTableName() returns TABLE_NAME which is: " + TABLE_NAME);
+		Log.i(TAG, "Ln#236, TaskList.TaskList.getTableName() returns TABLE_NAME which is: " + TABLE_NAME);
 		return TABLE_NAME;
 	}
 

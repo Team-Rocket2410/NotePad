@@ -23,6 +23,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 import com.nononsenseapps.notepad.data.local.sql.MyContentProvider;
 
@@ -43,6 +44,7 @@ public class RemoteTaskList extends DAO {
 
 	public static final int BASEURICODE = 401;
 	public static final int BASEITEMCODE = 402;
+	private static final String TAG = "RICKSMESSAGE";
 
 	public static void addMatcherUris(UriMatcher sURIMatcher) {
 		sURIMatcher
@@ -219,6 +221,7 @@ public class RemoteTaskList extends DAO {
 
 	@Override
 	protected String getTableName() {
+		Log.i(TAG, "Ln#224, RemoteTaskListFragment.getTableName() Table_Name:= " + TABLE_NAME);
 		return TABLE_NAME;
 	}
 

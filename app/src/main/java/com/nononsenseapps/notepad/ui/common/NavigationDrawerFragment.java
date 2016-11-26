@@ -219,6 +219,8 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         list.setLayoutManager(layoutManager);
 
+
+
         return rootView;
     }
 
@@ -268,6 +270,8 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
         // Normal lists
         switch (id) {
             case LOADER_NAVDRAWER_LISTS:
+                Log.i(TAG, "TaskList.Columns.TITLE = " + TaskList.Columns.TITLE +
+                        "\nand new String[]{TaskList.Columns._ID = " + TaskList.Columns._ID);
                 return new CursorLoader(getContext(), TaskList.URI_WITH_COUNT, new
                         String[]{TaskList.Columns._ID, TaskList.Columns.TITLE, TaskList.Columns
                         .VIEW_COUNT}, null, null, getResources().getString(R.string
@@ -528,7 +532,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
                 // Then try folder
                 result = SharedPreferencesHelper.getSdDir(getActivity());
             }
-            Log.i(TAG, "Ln#530, NavigationDrawerFragment.TopLevelItem.getAvatarName sets" +
+            Log.i(TAG, "Ln#535, NavigationDrawerFragment.TopLevelItem.getAvatarName sets" +
                     "\nresult = SharedPreferencesHelper.getGoogleAccount(getActivity()) for if 1" +
                     "\nor SharedPreferencesHelper.getDropboxAccount(getActivity()) for if 2" +
                     "\nor SharedPreferencesHelper.getSdDir(getActivity()) for if 3 which is now: " + result + "\n\n");
@@ -537,13 +541,13 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
 
         @Override
         public long getItemId() {
-            Log.i(TAG, "Ln#539, NavigationDrawerFragment.TopLevelItem.getItemId returns 0\n\n");
+            Log.i(TAG, "Ln#544, NavigationDrawerFragment.TopLevelItem.getItemId returns 0\n\n");
             return 0;
         }
 
         @Override
         public int getViewType() {
-            Log.i(TAG, "Ln#545, NavigationDrawerFragment.TopLevelItem.getViewType returns VIEWTYPE_TOPLEVEL, which is: " + VIEWTYPE_TOPLEVEL + "\n\n");
+            Log.i(TAG, "Ln#550, NavigationDrawerFragment.TopLevelItem.getViewType returns VIEWTYPE_TOPLEVEL, which is: " + VIEWTYPE_TOPLEVEL + "\n\n");
             return VIEWTYPE_TOPLEVEL;
         }
     }
@@ -555,25 +559,25 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
         public ExtraHeaderItem(long id, @StringRes int title) {
             this.mId = id;
             this.mTitleRes = title;
-            Log.i(TAG, "Ln#557, NavigationDrawerFragment.ExtraHeaderItem.ExtraHeaderItem constructor sets:" +
+            Log.i(TAG, "Ln#562, NavigationDrawerFragment.ExtraHeaderItem.ExtraHeaderItem constructor sets:" +
                     "\nthis.mId = id, which is " + id +
                     "\nthis.mTitleRes = title, which is: " + title + "\n\n");
         }
 
         public String getTitle() {
-            Log.i(TAG, "Ln#563, NavigationDrawerFragment.ExtraHeaderItem.getTitle returns getString(mTitleRes) which is: " + getString(mTitleRes) + "\n\n");
+            Log.i(TAG, "Ln#568, NavigationDrawerFragment.ExtraHeaderItem.getTitle returns getString(mTitleRes) which is: " + getString(mTitleRes) + "\n\n");
             return getString(mTitleRes);
         }
 
         @Override
         public long getItemId() {
-            Log.i(TAG, "Ln#569, NavigationDrawerFragment.ExtraHeaderItem.getItemId returns mId which is: " + mId + "\n\n");
+            Log.i(TAG, "Ln#574, NavigationDrawerFragment.ExtraHeaderItem.getItemId returns mId which is: " + mId + "\n\n");
             return mId;
         }
 
         @Override
         public int getViewType() {
-            Log.i(TAG, "Ln#575, NavigationDrawerFragment.ExtraHeaderItem.getViewType returns VIEWTYPE_EXTRA_HEADER_ITEM which is: " + VIEWTYPE_EXTRA_HEADER_ITEM + "\n\n");
+            Log.i(TAG, "Ln#580, NavigationDrawerFragment.ExtraHeaderItem.getViewType returns VIEWTYPE_EXTRA_HEADER_ITEM which is: " + VIEWTYPE_EXTRA_HEADER_ITEM + "\n\n");
             return VIEWTYPE_EXTRA_HEADER_ITEM;
         }
 
@@ -587,11 +591,15 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
         public ExtraFooterItem(long id, @StringRes int title) {
             super(id, title);
             mIconRes = -1;
+            Log.i(TAG, "Ln#594, NavigationDrawerFragment.ExtraFooterItem.ExtraFooterItem(long id, @StringRes int title)" +
+                    "\ncalls super(id, title) // title is: " +  title + " // and sets mIconRes = -1");
         }
 
         public ExtraFooterItem(long id, @StringRes int title, @DrawableRes int icon) {
             super(id, title);
             this.mIconRes = icon;
+            Log.i(TAG, "Ln#601, NavigationDrawerFragment.ExtraFooterItem.ExtraFooterItem(long id, @StringRes int title, @DrawableRes int icon)" +
+                    "\ntitle is: " + title);
         }
 
         @Override
@@ -604,6 +612,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
         }
 
         public void onClick() {
+            Log.i(TAG, "Ln#615, NavigationDrawerFragment.ExtraFooterItem.onClick() is empty method");
         }
     }
 
@@ -646,6 +655,8 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
         public void onClick() {
             mCallbacks.openChangelog();
             mDrawerLayout.closeDrawers();
+            Log.i(TAG, "Ln#658, NavigationDrawerFragment.ChangelogFooterItem.onClick() calls" +
+                    "\nmCallbacks.openChangelog() and mDrawerLayout.closeDrawers()");
         }
     }
 
@@ -654,12 +665,15 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
         public CreateListFooter() {
             super(EXTRA_ID_CREATE_LIST, R.string.menu_createnew, mIsThemeLight ? R.drawable
                     .ic_add_24dp_black_active : R.drawable.ic_add_24dp_white);
+            Log.i(TAG, "Ln#658, NavigationDrawerFragment.CreateListFooter.CreateListFooter()");
         }
 
         @Override
         public void onClick() {
             mCallbacks.createList();
             mDrawerLayout.closeDrawers();
+            Log.i(TAG, "Ln#675, NavigationDrawerFragment.CreateListFooter.onClick() calls" +
+                    "\nmCallbacks.createList() and mDrawerLayout.closeDrawers()");
         }
     }
 
@@ -682,7 +696,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
             super(itemView);
             mAvatar = (ImageView) itemView.findViewById(R.id.main_avatar);
             mText1 = (TextView) itemView.findViewById(android.R.id.text1);
-            Log.i(TAG, "Ln#684, NavigationDrawerFragment.TopLevelItemViewHolder.TopLevelItemViewHolder which sets " +
+            Log.i(TAG, "Ln#694, NavigationDrawerFragment.TopLevelItemViewHolder.TopLevelItemViewHolder which sets " +
                     "\nmAvatar = (ImageView) itemView.findViewById(R.id.main_avatar) which is: ??" + // mAvatar +
                     "\nmText1 = (TextView) itemView.findViewById(android.R.id.text1) which is: ??\n\n"); // + mText1);
         }
@@ -693,7 +707,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
             TextDrawable drawable = TextDrawable.builder()
                     .buildRound(imageName.toUpperCase().substring(0, 1), ColorGenerator.MATERIAL
                             .getColor(imageName));
-            Log.i(TAG, "Ln#695, NavigationDrawerFragment.TopLevelItemViewHolder.bind(TopLevelItemViewHolder) which sets " +
+            Log.i(TAG, "Ln#710, NavigationDrawerFragment.TopLevelItemViewHolder.bind(TopLevelItemViewHolder) which sets " +
                     "\nname = topLevelItem.getAvatarName() which is: " + name + " and " +
                     "\nimageName = (name.isEmpty() || name.startsWith(/)) ? N : name which is: " + imageName +
                     "\nTextDrawable drawable = TextDrawable.builder().buildRound(imageName.toUpperCase().substring(0, 1), " +
@@ -701,7 +715,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
                     "\nwhich is: ??\n\n"); // + drawable);
             mAvatar.setImageDrawable(drawable);
             mText1.setText(name);
-            Log.i(TAG, "Ln#703, NavigationDrawerFragment.TopLevelItemViewHolder.bind(TopLevelItem topLevelItem) which calls " +
+            Log.i(TAG, "Ln#718, NavigationDrawerFragment.TopLevelItemViewHolder.bind(TopLevelItem topLevelItem) which calls " +
                     "\nmAvatar.setImageDrawable(drawable) and " +
                     "\nmText1.setText(name)\n\n");
         }
@@ -720,7 +734,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
             mTitle = (TextView) itemView.findViewById(android.R.id.text1);
             mCount = (TextView) itemView.findViewById(android.R.id.text2);
             mAvatar = (ImageView) itemView.findViewById(R.id.item_avatar);
-            Log.i(TAG, "Ln#722, NavigationDrawerFragment.ExtraHeaderItemViewHolder ExtraHeaderItemViewHolder(View itemView) constructor sets:" +
+            Log.i(TAG, "Ln#737, NavigationDrawerFragment.ExtraHeaderItemViewHolder ExtraHeaderItemViewHolder(View itemView) constructor sets:" +
                     "\nmTitle = (TextView) itemView.findViewById(android.R.id.text1)" +
                     "\nmCount = (TextView) itemView.findViewById(android.R.id.text2)" +
                     "\nmAvatar = (ImageView) itemView.findViewById(R.id.item_avatar)\n\n");
@@ -732,7 +746,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
             mCount.setVisibility(View.GONE);
             TextDrawable drawable = TextDrawable.builder().buildRound(mItem.getTitle().toUpperCase()
                     .substring(0, 1), ColorGenerator.MATERIAL.getColor(mItem.getTitle()));
-            Log.i(TAG, "Ln#731, NavigationDrawerFragment.ExtraHeaderItemViewHolder.bind(TopLevelItemViewHolder) which sets " +
+            Log.i(TAG, "Ln#749, NavigationDrawerFragment.ExtraHeaderItemViewHolder.bind(TopLevelItemViewHolder) which sets " +
                     "\nmItem = headerItem; which is: " + mItem + " and calls" +
                     "\nmTitle.setText(headerItem.mTitleRes) and " +
                     "\nmCount.setVisibility(View.GONE)" +
@@ -749,7 +763,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
                     (TaskListFragment.LIST_ALL_ID_PREF_KEY, mItem.mId).commit();
             mCallbacks.openList(mItem.mId);
             mDrawerLayout.closeDrawers();
-            Log.i(TAG, "Ln#748, NavigationDrawerFragment.ExtraHeaderItemViewHolder.onClick(View v) calls" +
+            Log.i(TAG, "Ln#766, NavigationDrawerFragment.ExtraHeaderItemViewHolder.onClick(View v) calls" +
                     "\nPreferenceManager.getDefaultSharedPreferences(getContext()).edit().putLong(TaskListFragment.LIST_ALL_ID_PREF_KEY, mItem.mId).commit()" +
                     "\nmCallbacks.openList(mItem.mId)" +
                     "\nmDrawerLayout.closeDrawers()\n\n");

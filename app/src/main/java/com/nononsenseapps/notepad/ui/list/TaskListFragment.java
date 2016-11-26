@@ -80,8 +80,8 @@ public class TaskListFragment extends Fragment
     public static final String LIST_ID = "list_id";
     public static final int LOADER_TASKS = 1;
     public static final int LOADER_CURRENT_LIST = 0;
-    private static final String TAG = "TaskListFragment";
-
+    //private static final String TAG = "TaskListFragment";
+    private static final String TAG = "RICKSMESSAGE";
     RecyclerView listView;
 
     SimpleSectionsAdapter mAdapter;
@@ -110,7 +110,8 @@ public class TaskListFragment extends Fragment
         TaskListFragment f = new TaskListFragment();
         Bundle args = new Bundle();
         args.putLong(LIST_ID, listId);
-
+        Log.i(TAG, "Ln#113, TaskListFragment.getInstance(final long listId) LIST_ID:= " + LIST_ID);
+        Log.i(TAG, "Ln#113, TaskListFragment.getInstance(final long listId) listId:= " + listId);
         f.setArguments(args);
         return f;
     }
@@ -392,6 +393,7 @@ public class TaskListFragment extends Fragment
         View rootView = inflater.inflate(R.layout.fragment_task_list, container, false);
 
         listView = (RecyclerView) rootView.findViewById(android.R.id.list);
+        Log.i(TAG, "listView is: " + listView + " // and android.r.id.list is: " + android.R.id.list);
         loadList();
         // ListView will only support scrolling ToolBar off-screen from Lollipop onwards.
         // RecyclerView does not have this limitation
@@ -400,7 +402,7 @@ public class TaskListFragment extends Fragment
         // setup swipe to refresh
         mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swiperefresh);
         setupSwipeToRefresh();
-
+        Log.i(TAG, "Ln#403, TaskListFragment.onCreateView is called to have the fragment instantiate its user interface view.");
         return rootView;
     }
 
@@ -476,7 +478,7 @@ public class TaskListFragment extends Fragment
             public void onLoaderReset(Loader<Cursor> loader) {
                 if (loader.getId() == LOADER_TASKS) {
                     mAdapter.swapCursor(null);
-                    Log.i(TAG, "Ln#474, TaskListFragment.TaskListFragment.onLoaderReset(Loader<Cursor> loader)" +
+                    Log.i(TAG, "Ln#479, TaskListFragment.TaskListFragment.onLoaderReset(Loader<Cursor> loader)" +
                             "\nif(loader.getId() == LOADER_TASKS) calls: mAdapter.swapCursor(null)" +
                             "\nloader.getID() is: " + loader.getId() + "and LOADER_TASKS is: " + LOADER_TASKS);
                 }

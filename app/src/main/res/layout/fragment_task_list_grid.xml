@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible" >
-        
+
         <GridView
             android:id="@android:id/list"
             android:layout_width="match_parent"
@@ -58,9 +58,7 @@
             android:numColumns="2"
             android:verticalSpacing="16dp"
             android:horizontalSpacing="16dp"
-            tools:listitem="@layout/tasklist_item_rich" >
+            tools:listitem="@layout/tasklist_item_rich"/>
 
-</GridView>
     </FrameLayout>
-
 </FrameLayout>
