@@ -20,6 +20,7 @@ package com.nononsenseapps.notepad.ui.common;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.widget.Toast;
+import android.util.Log;
 
 import com.nononsenseapps.notepad.R;
 import com.nononsenseapps.notepad.data.model.sql.TaskList;
@@ -27,18 +28,8 @@ import com.nononsenseapps.notepad.ui.base.DialogConfirmBase;
 
 public class DialogDeleteList extends DialogConfirmBase {
 	static final String ID = "id";
-<<<<<<< HEAD
-<<<<<<< HEAD
-	static final String TAG2 = "deletelistok";
-	static final String TAG = "RICKSMESSAGE";
-	private NavigationDrawerFragment.NavigationDrawerCallbacks mCallbacks;
-=======
 	static final String TAG = "deletelistok";
 	static final String TAG2 = "RICKSMESSAGE";
->>>>>>> Rick-Ammon-Changes
-=======
-	static final String TAG = "deletelistok";
->>>>>>> parent of 1f2392c... Deletion Redirection
 
 	public static void showDialog(final FragmentManager fm, final long listId, final DialogConfirmedListener listener) {
 		DialogDeleteList d = new DialogDeleteList();
@@ -46,18 +37,9 @@ public class DialogDeleteList extends DialogConfirmBase {
 		Bundle args = new Bundle();
 		args.putLong(ID, listId);
 		d.setArguments(args);
-<<<<<<< HEAD
-<<<<<<< HEAD
-		d.show(fm, TAG2);
-		Log.i(TAG, "Ln#42, DialogDeleteList.DialogDeleteList.showDialog(final FragmentManager fm, final long listId, final DialogConfirmedListener listener)");
-=======
 		d.show(fm, TAG);
 		Log.i(TAG2, "Ln#41, DialogDeleteList.DialogDeleteList.showDialog(final FragmentManager fm, final long listId, final DialogConfirmedListener listener)" +
 				"\ncreates new dialogDeleteList instance, creates a listener for it and shows it");
->>>>>>> Rick-Ammon-Changes
-=======
-		d.show(fm, TAG);
->>>>>>> parent of 1f2392c... Deletion Redirection
 	}
 
 	@Override
