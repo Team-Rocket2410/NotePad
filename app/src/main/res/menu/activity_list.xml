@@ -29,13 +29,13 @@
     <item
         android:id="@+id/menu_sync"
         android:icon="@drawable/ic_refresh_24dp_white"
-        android:orderInCategory="1"
+        android:orderInCategory="2"
         android:title="@string/menu_sync"
         app:showAsAction="always"/>
     <item
         android:id="@+id/menu_sort"
         android:icon="@drawable/ic_sort_24dp_white"
-        android:orderInCategory="2"
+        android:orderInCategory="1"
         android:title="@string/sorting"
         app:showAsAction="always">
         <menu>
