@@ -29,6 +29,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.util.Log;
 
+import com.nononsenseapps.notepad.data.model.sql.TaskList;
 import com.nononsenseapps.notepad.ui.settings.ActivitySettings;
 import com.nononsenseapps.notepad.data.receiver.NotificationHelper;
 import com.nononsenseapps.notepad.data.service.gtasks.SyncHelper;
@@ -75,6 +76,7 @@ public class ActivityList extends ActivityBase implements NavigationDrawerFragme
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.i(TAG, "ln#78, ActivityList.onCreate.onClick : drawer onClick");
                 addTask();
             }
         });
@@ -187,11 +189,11 @@ public class ActivityList extends ActivityBase implements NavigationDrawerFragme
     public void openList(long id) {
         mCurrentList = id;
         invalidateOptionsMenu();
+
         getSupportFragmentManager().beginTransaction().replace(R.id.listfragment_container, TaskListFragment.getInstance(id)).commit();
         Log.i(TAG, "ln#191, ActivityList.openList(long id) id is: " + id + " && calls mCurrentList = id"
                 + "\ninvalidateOptionsMenu(); // getSupportFragmentManager(this returns \nmFragments.getSupportFragmentManager())which is:\n"
-                + getSupportFragmentManager() + " //\n.beginTransaction().replace(R.id.\nlistfragment_container," +
-                " TaskListFragment.getInstance(id)).commit()\n\n");
+                + getSupportFragmentManager() + " //\n.beginTransaction().replace(R.id.\nlistfragment_container,");
     }
     //I believe this can lead to the application of list names when viewing lists^^^
     @Override

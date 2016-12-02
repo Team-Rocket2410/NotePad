@@ -218,6 +218,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         list.setLayoutManager(layoutManager);
+        Log.i(TAG, "Ln#221, NavDrawerFrag list for NavDrawerFrag??? " + mAdapter.toString());
 
 
 
@@ -346,6 +347,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
             setHasStableIds(true);
             this.headers = headers;
             this.footers = footers;
+            Log.i(TAG, "ln#350, NDF.Adater footer: " + footers.toString() + "\nHeaders: " + headers.toString());
         }
 
         public void setData(Cursor cursor) {
@@ -627,6 +629,8 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
         public void onClick() {
             mCallbacks.openSettings();
             mDrawerLayout.closeDrawers();
+            Log.i(TAG, "Ln#632, NavigationDrawerFragment.ExtraFooterItem.onClick() calls" +
+                    "\n  mCallbacks.openSettings() & mDrawerLayout.closeDrawers()");
         }
     }
 
@@ -796,6 +800,8 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
         @Override
         public void onClick(View v) {
             mItem.onClick();
+            Log.i(TAG, "Ln#632, NavigationDrawerFragment.ExtraFooterItem.onClick() calls" +
+                    "\n  mItem.onClick() so also mItem.getTitle is: " + mItem.getTitle());
         }
     }
 

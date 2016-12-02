@@ -110,9 +110,9 @@ public class TaskListFragment extends Fragment
         TaskListFragment f = new TaskListFragment();
         Bundle args = new Bundle();
         args.putLong(LIST_ID, listId);
-        Log.i(TAG, "Ln#113, TaskListFragment.getInstance(final long listId) LIST_ID:= " + LIST_ID);
-        Log.i(TAG, "Ln#113, TaskListFragment.getInstance(final long listId) listId:= " + listId);
         f.setArguments(args);
+        Log.i(TAG, "Ln#113, TaskListFragment.getInstance(final long listId) f.toString:= " + f.toString());
+        Log.i(TAG, "Ln#113, TaskListFragment.getInstance(final long listId) listId:= " + listId);
         return f;
     }
 
@@ -393,7 +393,7 @@ public class TaskListFragment extends Fragment
         View rootView = inflater.inflate(R.layout.fragment_task_list, container, false);
 
         listView = (RecyclerView) rootView.findViewById(android.R.id.list);
-        Log.i(TAG, "listView is: " + listView + " // and android.r.id.list is: " + android.R.id.list);
+        Log.i(TAG, "ln#396, TasklistFragment.onCreateView() listView is: " + listView + " // and android.r.id.list is: " + android.R.id.list);
         loadList();
         // ListView will only support scrolling ToolBar off-screen from Lollipop onwards.
         // RecyclerView does not have this limitation
