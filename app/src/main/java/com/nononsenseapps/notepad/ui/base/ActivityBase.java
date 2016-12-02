@@ -32,6 +32,7 @@ import com.nononsenseapps.notepad.util.ActivityHelper;
 public abstract class ActivityBase extends AppCompatActivity {
 
     private boolean shouldRestart = false;
+    private static final String TAG = "LISTHUNTER";
     private final SharedPreferences.OnSharedPreferenceChangeListener mThemeLocaleChangeListener =
             new SharedPreferences.OnSharedPreferenceChangeListener() {
         @Override

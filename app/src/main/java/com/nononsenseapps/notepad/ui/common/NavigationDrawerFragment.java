@@ -80,6 +80,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
     private static final long EXTRA_ID_SEPARATOR_1 = -1001;
     private static final long EXTRA_ID_SEPARATOR_2 = -1002;
     private static final int LOADER_NAVDRAWER_LISTS = 0;
+    private static final String TAG = "LISTHUNTER";
 
     /**
      * Per the design guidelines, you should show the drawer on launch until the user manually

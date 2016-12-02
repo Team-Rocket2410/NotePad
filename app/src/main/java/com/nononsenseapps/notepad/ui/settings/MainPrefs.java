@@ -18,6 +18,7 @@
 package com.nononsenseapps.notepad.ui.settings;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.preference.ListPreference;
 import android.preference.PreferenceFragment;
 import android.support.annotation.NonNull;
@@ -51,6 +52,7 @@ public class MainPrefs extends PreferenceFragment {
 	public static final String WEEK_START_SATURDAY = "7";
 	public static final String WEEK_START_SUNDAY = "1";
 	public static final String WEEK_START_MONDAY = "2";
+	private static final String TAG = "RICKSMESSAGE";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -104,6 +106,7 @@ public class MainPrefs extends PreferenceFragment {
             if (actionBar != null) {
                 actionBar.setDisplayHomeAsUpEnabled(true);
                 actionBar.setTitle(getPreferenceScreen().getTitle());
+				Log.i(TAG, "ln#, MainPrefs.onCreateView builds actionbar and layout");
             }
         }
         return layout;

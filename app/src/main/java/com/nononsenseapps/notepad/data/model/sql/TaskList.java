@@ -39,6 +39,7 @@ public class TaskList extends DAO {
 	public static final Uri URI = Uri.withAppendedPath(
 			Uri.parse(MyContentProvider.SCHEME + MyContentProvider.AUTHORITY),
 			TABLE_NAME);
+	private static final String TAG = "LISTHUNTER";
 
 	public static final String VIEWCOUNT_NAME = "lists_with_count";
 	public static final Uri URI_WITH_COUNT = Uri.withAppendedPath(URI,

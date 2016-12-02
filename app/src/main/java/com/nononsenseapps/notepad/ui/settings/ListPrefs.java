@@ -30,6 +30,7 @@ import com.nononsenseapps.notepad.data.model.sql.TaskList;
 import java.util.ArrayList;
 
 public class ListPrefs extends PreferenceFragment {
+	private static final String TAG = "LISTHUNTER";
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

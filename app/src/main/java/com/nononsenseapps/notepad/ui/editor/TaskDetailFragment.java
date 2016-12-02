@@ -88,6 +88,7 @@ public class TaskDetailFragment extends Fragment implements OnDateSetListener {
     public static int LOADER_EDITOR_TASKLISTS = 3002;
     public static int LOADER_EDITOR_NOTIFICATIONS = 3003;
 
+
     StyledEditText taskText;
     CheckBox taskCompleted;
     Button dueDateBox;

@@ -54,6 +54,7 @@ public class ActivityList extends ActivityBase implements NavigationDrawerFragme
     private static final String START_LIST_ID = "start_list_id";
     private FloatingActionButton mFab;
     private long mCurrentList = TaskListFragment.LIST_ID_ALL;
+    private static final String TAG = "LISTHUNTER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

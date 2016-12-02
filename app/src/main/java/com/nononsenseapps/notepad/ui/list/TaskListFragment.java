@@ -80,7 +80,8 @@ public class TaskListFragment extends Fragment
     public static final String LIST_ID = "list_id";
     public static final int LOADER_TASKS = 1;
     public static final int LOADER_CURRENT_LIST = 0;
-    private static final String TAG = "TaskListFragment";
+//    private static final String TAG = "TaskListFragment";
+    private static final String TAG = "LISTHUNTER";
 
     RecyclerView listView;
 
