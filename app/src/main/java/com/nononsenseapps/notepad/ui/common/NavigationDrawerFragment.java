@@ -292,6 +292,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
                 "\nNAVDRAWER_LISTS and calls mAdapter.setData(c) and loader.getId() is: " + loader.getId() + "\n\n");
     }
 
+
     /**
      * Called when a previously created loader is being reset, and thus
      * making its data unavailable.  The application should at this point
