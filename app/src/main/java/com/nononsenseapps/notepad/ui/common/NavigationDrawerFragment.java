@@ -830,6 +830,7 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
             TextDrawable drawable = TextDrawable.builder()
                     .buildRound(title.toUpperCase().substring(0, 1), ColorGenerator.MATERIAL
                             .getColor(title));
+            Log.i(TAG, "ln#833, NDF.CursorViewHolder.bind title is: " + title);
 
             mAvatar.setImageDrawable(drawable);
         }
@@ -844,6 +845,8 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager
         public void onClick(View v) {
             mCallbacks.openList(id);
             mDrawerLayout.closeDrawers();
+
+            Log.i(TAG, "ln#833, NDF.CursorViewHolder.onClick mCallbacks.openList(id) and mDrawerLayout.closeDrawers()");
         }
     }
 }

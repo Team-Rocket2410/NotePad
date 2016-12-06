@@ -111,7 +111,7 @@ public class TaskListFragment extends Fragment
         Bundle args = new Bundle();
         args.putLong(LIST_ID, listId);
         f.setArguments(args);
-        Log.i(TAG, "Ln#113, TaskListFragment.getInstance(final long listId) f.toString:= " + f.toString());
+        Log.i(TAG, "Ln#113, TaskListFragment.getInstance(final long listId) LIST_ID:= " + LIST_ID);
         Log.i(TAG, "Ln#113, TaskListFragment.getInstance(final long listId) listId:= " + listId);
         return f;
     }
@@ -355,6 +355,8 @@ public class TaskListFragment extends Fragment
         // Start loading data
         mAdapter = new SimpleSectionsAdapter(this, getActivity());
 
+
+
         // Set a drag listener
         // TODO jonas
     /*mAdapter.setDropListener(new DropListener() {
@@ -467,10 +469,12 @@ public class TaskListFragment extends Fragment
             @Override
             public void onLoadFinished(Loader<Cursor> loader, Cursor c) {
                 if (loader.getId() == LOADER_TASKS) {
+                    //Log.i(TAG, "Ln#474, TaskListFragment.TaskListFragment.onLoadFinished " + c.getString(1));
                     mAdapter.swapCursor(c);
                     Log.i(TAG, "Ln#474, TaskListFragment.TaskListFragment.onLoadFinished(Loader<Cursor> loader, Cursor c)" +
                             "\nif(loader.getId() == LOADER_TASKS) calls: mAdapter.swapCursor(c)" +
-                            "\nloader.getID() is: " + loader.getId() + "and LOADER_TASKS is: " + LOADER_TASKS);
+                            "\nloader.getID() is: " + loader.getId() + "and LOADER_TASKS is: " + LOADER_TASKS +
+                            "\nc.getString(1) is: ");
                 }
             }
 
@@ -696,7 +700,7 @@ public class TaskListFragment extends Fragment
                 Cursor c = getContext().getContentResolver().query(Task.URI,
                         new String[] {Task.Columns._ID, Task.Columns.TITLE, Task.Columns.NOTE},
                         whereId, null, null);
-
+                Log.i(TAG, "ln#699, TLF.shareSelected c.getString(1) is: " + c.getString(1));
                 if (c != null) {
                     while (c.moveToNext()) {
                         if (shareText.length() > 0) {

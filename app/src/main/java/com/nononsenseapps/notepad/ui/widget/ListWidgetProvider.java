@@ -187,9 +187,10 @@ public class ListWidgetProvider extends AppWidgetProvider {
 		rv.setEmptyView(R.id.notesList, R.id.empty_view);
 
 		final long listId = settings.getLong(ListWidgetConfig.KEY_LIST, -1);
-		final String listTitle = settings.getString(
+		/*final String listTitle = settings.getString(
 				ListWidgetConfig.KEY_LIST_TITLE,
-				context.getString(R.string.app_name));
+				context.getString(R.string.app_name));*/
+		final String listTitle = "AM I DIFFERENT?";
 		rv.setTextViewText(R.id.titleButton, listTitle);
 
 		// Hide header if we should

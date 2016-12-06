@@ -19,6 +19,7 @@ package com.nononsenseapps.notepad.ui.list;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -93,6 +94,8 @@ public class ActivityList extends ActivityBase implements NavigationDrawerFragme
         // Sync if appropriate
         OrgSyncService.start(this);
         Log.i(TAG, "ln#93, ActivityList.onCreate");
+
+        // here is where we'd grab the list name and pass to actionbar
     }
 
     @Override
@@ -189,11 +192,13 @@ public class ActivityList extends ActivityBase implements NavigationDrawerFragme
     public void openList(long id) {
         mCurrentList = id;
         invalidateOptionsMenu();
-
+        TaskListFragment e = TaskListFragment.getInstance(id);
+        Bundle eb = e.getArguments();
+        String a = eb.getString("title");
         getSupportFragmentManager().beginTransaction().replace(R.id.listfragment_container, TaskListFragment.getInstance(id)).commit();
         Log.i(TAG, "ln#191, ActivityList.openList(long id) id is: " + id + " && calls mCurrentList = id"
                 + "\ninvalidateOptionsMenu(); // getSupportFragmentManager(this returns \nmFragments.getSupportFragmentManager())which is:\n"
-                + getSupportFragmentManager() + " //\n.beginTransaction().replace(R.id.\nlistfragment_container,");
+                + getSupportFragmentManager() + " \n a is: " + a);
     }
     //I believe this can lead to the application of list names when viewing lists^^^
     @Override
